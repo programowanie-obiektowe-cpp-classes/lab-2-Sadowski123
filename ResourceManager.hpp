@@ -17,7 +17,7 @@ class ResourceManager
         ResourceManager(const ResourceManager& i)  // konstruktor kopiuj¹cy
         {
         	cos = new Resource();
-        	*cos = *i.cos;	//kopiujê wartoœæ
+        	*cos = *(i.cos);	//kopiujê wartoœæ
 		}
         
     	ResourceManager& operator=(const ResourceManager& i)  //kopiuj¹cy operator przypisania
@@ -26,9 +26,9 @@ class ResourceManager
     		return *this;  //gdy korzystamy z operatora przypisania korzystamy z return 
 		}
 		
-		ResourceManager (ResourceManager&& i)  //konstruktor przenosz¹cy
+		ResourceManager(ResourceManager&& i)  //konstruktor przenosz¹cy
 		{
-			cos = i.cos;
+			cos = (i.cos);
 			i.cos = nullptr;  //nullptr to wskaŸnik pusty
 		}
 		
@@ -40,7 +40,7 @@ class ResourceManager
     		return *this;
 		}
 		
-		~RecourceManager()
+		~ResourceManager()
 		{
 			delete cos;
 		}
